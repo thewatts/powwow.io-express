@@ -33,6 +33,11 @@ if ('development' == app.get('env')) {
   mongoose.connect('mongodb://localhost/powwow_dev');
 }
 
+if ('test' == app.get('env')) {
+  app.use(express.errorHandler());
+  mongoose.connect('mongodb://localhost/powwow_test');
+}
+
 var UserSchema = new mongoose.Schema({
    name: String,
   email: String,
