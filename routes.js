@@ -19,6 +19,6 @@ module.exports = function(app) {
   app.get('/users/:login',      user_controller.show);
   app.get('/users/:login/edit', user_controller.edit);
   app.put('/users/:login',      user_controller.update);
-  app.delete('/users/:login',   user.destroy);
+  app.delete('/users/:login',   user_controller.delete);
 
 };

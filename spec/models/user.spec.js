@@ -1,12 +1,34 @@
+var mongoose = require('mongoose');
 var request = require('request');
+var User    = require('../../models/user');
 
-describe("#user", function() {
+mongoose.connect('mongodb://localhost/powwow_test');
 
-  it("users page should respond 200", function(done) {
-    request("http://localhost:3000/users", function(error, response, body) {
-      expect(200);
+describe("#User", function() {
+
+  it("should be able to remove users", function(done) {
+
+    new User({
+      login: "thewatts",
+      name:  "Nathaniel",
+      email: "reg@nathanielwatts.com",
+      age:   20
+    }).save(function (err, user) {});
+
+    User.count({}, function(err, count) {
+      expect(count).toEqual(1);
       done();
     });
+
+    var query = User.remove({});
+    query.exec();
+
+    User.count({}, function(err, count) {
+      expect(count).toEqual(0);
+      done();
+    });
+
+
   });
 
 });

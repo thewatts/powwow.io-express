@@ -3,7 +3,7 @@
  * GET users listing.
  */
 
-User = require('../models/user')
+User = require('../models/user');
 
 exports.index = function(req, res) {
   User.find({}, function(err, docs) {
@@ -69,5 +69,5 @@ exports.delete = function(req, res) {
   User.remove({ login: req.params.login }, function (err) {
     res.redirect('/users');
   });
-});
+};
 
