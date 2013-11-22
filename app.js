@@ -38,22 +38,22 @@ if ('test' == app.get('env')) {
   mongoose.connect('mongodb://localhost/powwow_test');
 }
 
-app.post('/users', function(req, res) {
-  var b = req.body;
-  console.log('-----body-----');
-  console.log(b);
-  new User({
-    login: b.login,
-    name:  b.name,
-    email: b.email.toLowerCase(),
-    age:   b.age,
-  }).save(function (err, user) {
-    if (err) res.json(err);
-    res.redirect('/users/' + user.login);
-  });
-});
+//app.post('/users', function(req, res) {
+//  var b = req.body;
+//  console.log('-----body-----');
+//  console.log(b);
+//  new User({
+//    login: b.login,
+//    name:  b.name,
+//    email: b.email.toLowerCase(),
+//    age:   b.age,
+//  }).save(function (err, user) {
+//    if (err) res.json(err);
+//    res.redirect('/users/' + user.login);
+//  });
+//});
 
-//var routes = require('./routes')(app);
+var routes = require('./routes')(app);
 
 //app.get('/', routes.index);
 

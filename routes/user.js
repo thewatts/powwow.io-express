@@ -29,6 +29,7 @@ exports.create = function(req, res) {
     age:   b.age,
   }).save(function (err, user) {
     if (err) res.json(err);
+    console.log(user);
     res.redirect('/users/' + user.login);
   });
 };
