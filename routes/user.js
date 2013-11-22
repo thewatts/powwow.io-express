@@ -3,7 +3,7 @@
  * GET users listing.
  */
 
-User = require('../models/user');
+User = require('../lib/user');
 
 exports.index = function(req, res) {
   User.find({}, function(err, docs) {

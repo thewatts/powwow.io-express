@@ -1,4 +1,7 @@
-var request = require('request');
+var request  = require('request');
+var mongoose = require('mongoose');
+var User     = require('../../lib/user');
+mongoose.connect('mongodb://localhost/powwow_test');
 
 describe("#users", function() {
 
@@ -17,8 +20,11 @@ describe("#users", function() {
   });
 
   it("should create a user", function(done) {
-    request.post("http://localhost:3000/users/create",
+    var params = "login=thewatts&name=Nathaniel&email=asdf@asdf.com&age=28"
+    request.post("http://localhost:3000/users?testing=chicken",
       function(error, response, body) {
+        console.log('---------------------');
+        console.log(body);
         expect(response.statusCode).toEqual(200);
         done();
       }

@@ -1,5 +1,5 @@
 var user_controller = require('./routes/user');
-var User = require('./models/user');
+var User = require('./lib/user');
 
 module.exports = function(app) {
 
