@@ -1,7 +1,9 @@
 h1 Update User
 
-form(method="POST" action="/users/#{user.name}")
+form(method="POST" action="/users/#{user.login}")
   input(type="hidden", name="_method", value="PUT")
+  p Login:
+    input#login(type="text" name="login" value="#{user.login}")
   p Name:
     input#name(type="text" name="name" value="#{user.name}")
   p Email:
