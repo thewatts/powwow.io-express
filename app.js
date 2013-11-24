@@ -5,7 +5,6 @@
 
 var express  = require('express');
 var mongoose = require('mongoose');
-//var user     = require('./routes/user');
 var http     = require('http');
 var path     = require('path');
 
@@ -38,25 +37,9 @@ if ('test' == app.get('env')) {
   mongoose.connect('mongodb://localhost/powwow_test');
 }
 
-//app.post('/users', function(req, res) {
-//  var b = req.body;
-//  console.log('-----body-----');
-//  console.log(b);
-//  new User({
-//    login: b.login,
-//    name:  b.name,
-//    email: b.email.toLowerCase(),
-//    age:   b.age,
-//  }).save(function (err, user) {
-//    if (err) res.json(err);
-//    res.redirect('/users/' + user.login);
-//  });
-//});
-
 var routes = require('./routes')(app);
 
-//app.get('/', routes.index);
-
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+  console.log('Express server listening on port ' + app.get('port') + ' in ' + app.settings.env);
 });
+

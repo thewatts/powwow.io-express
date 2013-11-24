@@ -7,7 +7,6 @@ module.exports = function(app) {
   app.param('login', function(req, res, next, login) {
     User.find({ login: login }, function(err, docs) {
       req.user = docs[0];
-      console.log(req.user);
       next();
     });
   });

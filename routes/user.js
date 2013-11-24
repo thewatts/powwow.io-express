@@ -13,15 +13,12 @@ exports.index = function(req, res) {
 
 // NEW
 exports.new = function(req, res) {
-  console.log('testing');
   res.render('users/new');
 };
 
 // CREATE
 exports.create = function(req, res) {
   var b = req.body;
-  console.log('-----body-----');
-  console.log(b);
   new User({
     login: b.login,
     name:  b.name,
@@ -29,22 +26,12 @@ exports.create = function(req, res) {
     age:   b.age,
   }).save(function (err, user) {
     if (err) res.json(err);
-    console.log(user);
     res.redirect('/users/' + user.login);
   });
 };
 
-//app.param('name', function(req, res, next, name) {
-//  Users.find({ name: name }, function(err, docs) {
-//    req.user = docs[0];
-//    console.log(req.user);
-//    next();
-//  });
-//});
-
 // SHOW
 exports.show = function (req, res) {
-  console.log('show');
   res.render('users/show', {user: req.user });
 };
 
