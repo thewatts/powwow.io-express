@@ -35,6 +35,7 @@ if ('development' == app.get('env')) {
 if ('test' == app.get('env')) {
   app.use(express.errorHandler());
   mongoose.connect('mongodb://localhost/powwow_test');
+  app.set('port', 4567);
 }
 
 var routes = require('./routes')(app);

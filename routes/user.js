@@ -6,14 +6,14 @@
 User = require('../lib/user');
 
 exports.index = function(req, res) {
-  User.find({}, function(err, docs) {
-    res.render('users/index', { users: docs });
+  User.find({}, function(err, users) {
+    res.render('user/index', { users: users });
   });
 };
 
 // NEW
 exports.new = function(req, res) {
-  res.render('users/new');
+  res.render('user/new');
 };
 
 // CREATE
@@ -26,18 +26,18 @@ exports.create = function(req, res) {
     age:   b.age,
   }).save(function (err, user) {
     if (err) res.json(err);
-    res.redirect('/users/' + user.login);
+    res.redirect('/user/' + user.login);
   });
 };
 
 // SHOW
 exports.show = function (req, res) {
-  res.render('users/show', {user: req.user });
+  res.render('user/show', {user: req.user });
 };
 
 // EDIT
 exports.edit = function (req, res) {
-  res.render('users/edit', {user: req.user });
+  res.render('user/edit', {user: req.user });
 };
 
 // UPDATE

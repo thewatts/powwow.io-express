@@ -1,5 +1,6 @@
-var user_controller = require('./routes/user');
-var User = require('./lib/user');
+var app = require('./app');
+var users_controller = require('./routes/user');
+var ideas_controller = require('./routes/idea');
 
 module.exports = function(app) {
 
@@ -11,13 +12,16 @@ module.exports = function(app) {
     });
   });
 
-  // routes
-  app.get('/users',             user_controller.index);
-  app.get('/users/new',         user_controller.new);
-  app.post('/users',            user_controller.create);
-  app.get('/users/:login',      user_controller.show);
-  app.get('/users/:login/edit', user_controller.edit);
-  app.put('/users/:login',      user_controller.update);
-  app.delete('/users/:login',   user_controller.delete);
+  // users
+  app.get('/users',             users_controller.index);
+  app.get('/users/new',         users_controller.new);
+  app.post('/users',            users_controller.create);
+  app.get('/users/:login',      users_controller.show);
+  app.get('/users/:login/edit', users_controller.edit);
+  app.put('/users/:login',      users_controller.update);
+  app.delete('/users/:login',   users_controller.delete);
+
+  // ideas
+  app.get('/ideas', ideas_controller.index);
 
 };

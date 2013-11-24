@@ -3,10 +3,10 @@
  * GET Idea page.
  */
 
-var express = require('express');
-var router  = new express.Router();
+var Idea = require('../lib/idea');
 
-router.get('/ideas', function(req, res) {
-  //res.send(req.originalUrl + "\n");
-  res.send("HAHAHA");
-});
+exports.index = function(req, res) {
+  Idea.find({}, function(err, ideas) {
+    res.render('idea/index', { ideas: ideas });
+  });
+};
