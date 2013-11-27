@@ -1,6 +1,8 @@
-var app = require('./app');
-var users_controller = require('./routes/user');
-var ideas_controller = require('./routes/idea');
+var app                     = require('./app');
+var static_pages_controller = require('./routes/static_pages');
+var activity_controller     = require('./routes/activity');
+var users_controller        = require('./routes/user');
+var ideas_controller        = require('./routes/idea');
 
 module.exports = function(app) {
 
@@ -11,6 +13,12 @@ module.exports = function(app) {
       next();
     });
   });
+
+  // home
+  app.get('/', static_pages_controller.index);
+
+  // activity
+  app.get('/activity', activity_pages_controller.index);
 
   // users
   app.get('/users',             users_controller.index);
